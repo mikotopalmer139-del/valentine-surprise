@@ -1,5 +1,16 @@
-body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #ffe4e1; font-family: sans-serif; overflow: hidden; }
-.container { text-align: center; }
-button { padding: 15px 30px; font-size: 1.2rem; border-radius: 10px; border: none; cursor: pointer; position: absolute; }
-#yesBtn { background-color: #ff69b4; color: white; transform: translate(-80px, 50px); }
-#noBtn { background-color: white; transform: translate(40px, 50px); transition: 0.1s; touch-action: none; }
+const noBtn = document.querySelector('#noBtn');
+const yesBtn = document.querySelector('#yesBtn');
+
+function move() {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+}
+
+noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); move(); });
+noBtn.addEventListener('mouseover', move);
+
+yesBtn.addEventListener('click', () => {
+    document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%;">YAY! 💖</h1>';
+});
